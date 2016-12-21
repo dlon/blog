@@ -14,9 +14,10 @@ class page:
 		# handle markdown pages
 		try:
 			f = open("pages/{}.md".format(url))
-			html = markdown.markdown(f.read())
+			md = markdown.Markdown(extensions = ['markdown.extensions.meta'])
+			html = md.convert(f.read())
 			f.close()
-			return render.markdown('title', html)
+			return render.markdown(' '.join(md.Meta['title']), html)
 		except IOError:
 			raise web.notfound()
 
