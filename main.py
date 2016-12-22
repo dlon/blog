@@ -10,11 +10,7 @@ app = web.application(urls, globals())
 
 class index:
 	def GET(self):
-		f = open("pages/index.md")
-		md = markdown.Markdown(extensions = ['markdown.extensions.meta'])
-		html = md.convert(f.read())
-		f.close()
-		return render.index(md.Meta, html)
+		return render.index()
 
 class writing:
 	def GET(self, url):
