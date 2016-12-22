@@ -1,0 +1,30 @@
+$def with (meta, html)
+<!doctype html>
+<html>
+<head>
+<title>$(' '.join(meta['title']))</title>
+<style>
+	#menu {
+		position:absolute;
+		width:150px;
+		height:100%;
+		left:0;
+		top:0;
+		padding:20px;
+	}
+	#main {
+		margin:0 auto;
+		width:500px;
+	}
+</style>
+</head>
+<body>
+	<div id="menu">
+		<a href="#">home</a><br>
+		<a href="#">about</a>
+	</div>
+	<div id="main">
+		$:html
+	</div>
+</body>
+</html>

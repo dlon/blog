@@ -2,22 +2,29 @@ import web
 import markdown
 
 urls = (
-	'/(.*)', 'page'
+	'/', 'index',
+	'/writings/(.+)', 'writing',
 )
 render = web.template.render('templates')
 app = web.application(urls, globals())
 
-class page:
+class index:
+	def GET(self):
+		f = open("pages/index.md")
+		md = markdown.Markdown(extensions = ['markdown.extensions.meta'])
+		html = md.convert(f.read())
+		f.close()
+		return render.index(md.Meta, html)
+
+class writing:
 	def GET(self, url):
-		if url == '' or url == '/':
-			url = 'index'
-		# handle markdown pages
+		if url[-1] == '/': url = url[:-1]
 		try:
 			f = open("pages/{}.md".format(url))
 			md = markdown.Markdown(extensions = ['markdown.extensions.meta'])
 			html = md.convert(f.read())
 			f.close()
-			return render.markdown(' '.join(md.Meta['title']), html)
+			return render.writing(md.Meta, html)
 		except IOError:
 			raise web.notfound()
 
