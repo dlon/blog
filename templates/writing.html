@@ -7,7 +7,6 @@ $def with (meta, html)
 	#menu {
 		position:absolute;
 		width:150px;
-		height:100%;
 		left:0;
 		top:0;
 		padding:20px;
@@ -20,8 +19,8 @@ $def with (meta, html)
 </head>
 <body>
 	<div id="menu">
-		<a href="#">home</a><br>
-		<a href="#">about</a>
+		<a href="/">home</a><br>
+		<a href="/about">about</a>
 	</div>
 	<div id="main">
 		<h1>$(' '.join(meta['title']))</h1>
