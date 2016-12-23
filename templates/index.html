@@ -16,6 +16,9 @@ $def with (posts_meta)
 		margin:0 auto;
 		width:500px;
 	}
+	ul {
+		list-style:square;
+	}
 </style>
 </head>
 <body>
@@ -25,8 +28,10 @@ $def with (posts_meta)
 	</div>
 	<div id="main">
 		<h1>Writings</h1>
+		<ul>
 		$for post in posts_meta:
-			$post['published'][0]. <a href="$post['url']">$' '.join(post['title'])</a>
+			<li><a href="$post['url']">$' '.join(post['title'])</a></li>
+		</ul>
 	</div>
 </body>
 </html>
